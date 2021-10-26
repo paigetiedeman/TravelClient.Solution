@@ -16,11 +16,10 @@ namespace TravelClient.Models
         public string Country { get; set; }
         public int Rating { get; set; }
         public string Description { get; set; }
-        public byte[] Image { get; set; }
     
     public static List<Review> GetReviews()
         {
-            Task<string> apiCallTask = ApiHelper.GetAll();
+            var apiCallTask = ApiHelper.GetAll();
             string result = apiCallTask.Result;
 
             JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
@@ -31,7 +30,7 @@ namespace TravelClient.Models
 
         public static Review GetDetails(int id)
         {
-            Task<string> apiCallTask = ApiHelper.Get(id);
+            var apiCallTask = ApiHelper.Get(id);
             string result = apiCallTask.Result;
 
             JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);

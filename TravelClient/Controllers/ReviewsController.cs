@@ -16,6 +16,7 @@ namespace TravelClient.Controllers
     public IActionResult Index()
     {
       var allReviews = Review.GetReviews();
+      Console.WriteLine(allReviews);
       return View(allReviews);
     }
 
