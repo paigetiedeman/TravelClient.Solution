@@ -5,28 +5,36 @@
 @using TravelClient.Models;
 
 <h1>New Review:</h1>
+<hr>
 
 <form action="/reviews" method="post">
   <label for="name">Review's Name</label>
-  <input id="name" name="name" type="text">
+  <input id="name" name="name" type="text" class="form-control" required>
+  <br>
   <label for="city">Review's City</label>
-  <input id="city" name="city" type="text">
+  <input id="city" name="city" type="text" class="form-control" required>
+  <br>
   <label for="country">Review's Country</label>
-  <input id="country" name="country" type="text">
+  <input id="country" name="country" type="text" class="form-control" required>
+  <br>
   <label for="rating">Review's Rating</label>
-  <input id="rating" name="rating" type="number" min="1" max="10">
+  <input id="rating" name="rating" type="number" min="1" max="10" class="form-control" required>
+  <br>
   <label for="description">Review:</label>
-  <input id="description" name="description" type="text">
-  <button type="submit">Submit!</button>
+  <input id="description" name="description" type="text" class="form-control" required>
+  <br>
+  <button type="submit" class="btn btn-dark">Submit!</button>
 </form>
+<br>
 
+<h4>All Reviews</h4>
 <ol>
 @foreach (Review review in Model)
 {
     <ul>
-        <li>ID: @review.ReviewId</li>
-        <li>Name: @review.Name</li>
+        @* <li>ID: @review.ReviewId</li> *@
         <li>City: @review.City</li>
+        <li>Name: @review.Name</li>
         <li>Country: @review.Country</li>
         <li>Rating: @review.Rating</li>
         <li>Review: @review.Description</li>
