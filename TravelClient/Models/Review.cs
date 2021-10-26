@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -7,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TravelClient.Models
 {
-public class Review
+    public class Review
     {
         public int ReviewId { get; set; }
         public string Name { get; set; }
@@ -17,10 +18,10 @@ public class Review
         public string Description { get; set; }
         public byte[] Image { get; set; }
     
-        public static List<Review> GetReviews()
-        { 
-            var apiCallTask = ApiHelper.GetAll();
-            var result = apiCallTask.Result;
+    public static List<Review> GetReviews()
+        {
+            Task<string> apiCallTask = ApiHelper.GetAll();
+            string result = apiCallTask.Result;
 
             JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
             List<Review> reviewList = JsonConvert.DeserializeObject<List<Review>>(jsonResponse.ToString());
@@ -30,29 +31,30 @@ public class Review
 
         public static Review GetDetails(int id)
         {
-            var apiCallTask = ApiHelper.Get(id);
-            var result = apiCallTask.Result;
+            Task<string> apiCallTask = ApiHelper.Get(id);
+            string result = apiCallTask.Result;
 
             JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
             Review review = JsonConvert.DeserializeObject<Review>(jsonResponse.ToString());
 
             return review;
         }
-        public static void Post(Review review)
+
+        public async static Task Post(Review review)
         {
             string jsonReview = JsonConvert.SerializeObject(review);
-            var apiCallTask = ApiHelper.Post(jsonReview);
-        }
-        public static void Put(Review review)
-        {
-            string jsonReview = JsonConvert.SerializeObject(review);
-            var apiCallTask = ApiHelper.Put(review.ReviewId, jsonReview);
+            await ApiHelper.Post(jsonReview);
         }
 
-        public static void Delete(int id)
+        public async static Task Put(Review review)
         {
-            var apiCallTask = ApiHelper.Delete(id);
+            string jsonReview = JsonConvert.SerializeObject(review);
+            await ApiHelper.Put(review.ReviewId, jsonReview);
+        }
+
+        public async static Task Delete(int id)
+        {
+            await ApiHelper.Delete(id);
         }
     }
-
 }

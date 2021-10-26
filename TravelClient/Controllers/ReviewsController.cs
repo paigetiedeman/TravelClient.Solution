@@ -4,13 +4,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using TravelClient.Models;
 
 namespace TravelClient.Controllers
 {
     public class ReviewsController : Controller
   {
-
     public IActionResult Index()
     {
       var allReviews = Review.GetReviews();
@@ -18,9 +20,9 @@ namespace TravelClient.Controllers
     }
 
     [HttpPost]
-    public IActionResult Index(Review review)
+    public async Task<IActionResult> Index(Review review)
     {
-      Review.Post(review);
+      await Review.Post(review);
       return RedirectToAction("Index");
     }
 
@@ -37,16 +39,16 @@ namespace TravelClient.Controllers
     }
 
     [HttpPost]
-    public IActionResult Details(int id, Review review)
+    public async Task<IActionResult> Details(int id, Review review)
     {
       review.ReviewId = id;
-      Review.Put(review);
+      await Review.Put(review);
       return RedirectToAction("Details", id);
     }
 
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-      Review.Delete(id);
+      await Review.Delete(id);
       return RedirectToAction("Index");
     }
   }
