@@ -32,11 +32,8 @@
 @foreach (Review review in Model)
 {
     <ul>
-        @* <li>ID: @review.ReviewId</li> *@
-        <li>City: @review.City</li>
-        <li>Name: @review.Name</li>
-        <li>Country: @review.Country</li>
-        <li>Rating: @review.Rating</li>
+        <li>Location: @review.City, @review.Country</li>
+        <li>Rating: @review.Rating/10</li>
         <li>Review: @review.Description</li>
     </ul>
     <a href="/Reviews/Details/@(review.ReviewId)"><p>View Details</p></a>

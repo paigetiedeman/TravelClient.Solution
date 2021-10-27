@@ -8,7 +8,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Monoton", Helvetica, sans-serif;
   background: #AB3428;
   letter-spacing: 5px;
 }
@@ -19,6 +18,7 @@ h1 {
   font-size: 14vw;
   text-transform: uppercase;
   color: #F49E4C;
+  font-family: "Monoton", Helvetica, sans-serif;
 }
 
 @media (max-width: 480px) {
@@ -49,11 +49,24 @@ li {
   color: #F5EE9E;
 }
 
+.btn {
+  letter-spacing: 5px;
+}
+
 @supports (-webkit-background-clip: text) {
   h1 {
     color: transparent;
     background: linear-gradient(7deg, #F5EE9E 50%, #F49E4C 0);
     -webkit-background-clip: text;
   }
+}
+
+a {
+  color: #a79c81;
+}
+
+a:hover {
+  color: black;
+  text-shadow: 0 0 40px white, 0 0 20px white;
 }
 /*# sourceMappingURL=custom.css.map */

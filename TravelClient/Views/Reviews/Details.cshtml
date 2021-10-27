@@ -6,15 +6,15 @@
 
 
 <ul>
-    <li>ID: @Model.ReviewId</li>
+    @* <li>#: @Model.ReviewId</li> *@
     <li>Name: @Model.Name</li>
     <li>City: @Model.City</li>
     <li>Country: @Model.Country</li>
-    <li>Rating: @Model.Rating</li>
+    <li>Rating: @Model.Rating/10</li>
     <li>Review: @Model.Description</li>
 </ul>
 <br>
 
-<a href="/Reviews/Edit/@(Model.ReviewId)"><p>Edit</p></a>
-<a href="/Reviews"><p>Return</p></a>
-<a href="/Reviews/Delete/@(Model.ReviewId)"><p>Delete Review</p></a>
+<a href="/Reviews/Edit/@(Model.ReviewId)" class="btn btn-dark">Edit</a>
+<a href="/Reviews" class="btn btn-dark">Return</a>
+<a href="/Reviews/Delete/@(Model.ReviewId)" class="btn btn-dark">Delete Review</a>
