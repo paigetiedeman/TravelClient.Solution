@@ -1,6 +1,55 @@
 @import '_config';
+@import url('https://fonts.googleapis.com/css?family=Monoton');
 
-html{
-  background-color: $background-color;
-  color: $primary-color;
+
+
+body {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: "Monoton", Helvetica, sans-serif;
+  background: $bgColor;
+  letter-spacing: 5px;
+}
+
+h1 {
+  text-align: center;
+  display: inline;
+  font-size: 14vw;
+  text-transform: uppercase;
+  color: $darkColor;
+  
+  //phones
+  @media (max-width: 480px) {
+    font-size: 10vw;
+  }
+
+  //tablets
+  @media (min-width: 481px) and (max-width: 768px){
+    font-size: 6vw;
+  }
+
+  // laptops
+  @media (min-width: 769px) and (max-width: 1024px){
+    font-size: 7vw;
+  }
+  
+  //desktops
+  @media (min-width: 1025px) {
+    font-size: 8vw;
+
+  }
+}
+
+li {
+  color: $lightColor;
+}
+
+@supports (-webkit-background-clip: text) {
+	h1 {
+		color: transparent;
+		background: linear-gradient(7deg, $lightColor 50%, $darkColor 0);
+		-webkit-background-clip: text;
+	}
 }
