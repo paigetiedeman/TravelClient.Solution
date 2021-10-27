@@ -11,7 +11,7 @@ namespace TravelClient.Models
             RestClient client = new RestClient("http://localhost:5004/api/");
             RestRequest request = new RestRequest($"reviews", Method.GET);
             IRestResponse response = await client.ExecuteTaskAsync(request);
-      return response.Content;
+            return response.Content;
         }
 
         public static async Task<string> Get(int id)
@@ -46,6 +46,14 @@ namespace TravelClient.Models
             RestRequest request = new RestRequest($"reviews/{id}", Method.DELETE);
             request.AddHeader("Content-Type", "application/json");
             IRestResponse response = await client.ExecuteTaskAsync(request);
+        }
+
+        public static async Task<string> Search(string name, string city, string country)
+        {
+            RestClient client = new RestClient("http://localhost:5004/api");
+            RestRequest request = new RestRequest($"reviews/?name={name}&city={city}&country={country}", Method.GET);
+            IRestResponse response = await client.ExecuteTaskAsync(request);
+            return response.Content;
         }
     }
 }

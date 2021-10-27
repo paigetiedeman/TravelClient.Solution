@@ -1,23 +1,20 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Search";
 }
-@using TravelClient.Models;
-
-<h1>All Reviews:</h1>
 
 <ol>
 @foreach (Review review in Model)
 {
     <ul>
-        <li>Review # @review.ReviewId</li>
-        <li>Name: @review.Name</li>
+        @* <li>ID: @review.ReviewId</li> *@
         <li>City: @review.City</li>
+        <li>Name: @review.Name</li>
         <li>Country: @review.Country</li>
         <li>Rating: @review.Rating</li>
         <li>Review: @review.Description</li>
     </ul>
+    <a href="/Reviews/Details/@(review.ReviewId)"><p>View Details</p></a>
     <br>
 }
 </ol>
-
-<a href="/Reviews/Index"><p>See all Reviews</p></a>

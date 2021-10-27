@@ -16,7 +16,6 @@ namespace TravelClient.Controllers
     public IActionResult Index()
     {
       var allReviews = Review.GetReviews();
-      Console.WriteLine(allReviews);
       return View(allReviews);
     }
 
@@ -51,6 +50,18 @@ namespace TravelClient.Controllers
     {
       await Review.Delete(id);
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Search()
+    {
+      return View();
+    }
+
+    public IActionResult SearchResults(string name, string city, string country)
+    {
+      
+      var searchResults = Review.Search(name, city, country);
+      return View(searchResults);
     }
   }
 }

@@ -55,5 +55,16 @@ namespace TravelClient.Models
         {
             await ApiHelper.Delete(id);
         }
+
+        public static List<Review> Search(string name, string city, string country)
+        {
+            var apiCallTask = ApiHelper.Search(name, city, country);
+            string result = apiCallTask.Result;
+
+            JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+            List<Review> reviewList = JsonConvert.DeserializeObject<List<Review>>(jsonResponse.ToString());
+
+            return reviewList;
+        }
     }
 }

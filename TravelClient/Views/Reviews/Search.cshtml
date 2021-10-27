@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Search";
+
+}
+
+@using TravelClient.Models;
+
+<h1>Search Reviews:</h1>
+<hr>
+
+<form action="/reviews/SearchResults" method="post">
+  <label for="name">Review's Name</label>
+  <input id="name" name="name" type="text" class="form-control">
+  <br>
+  <label for="city">Review's City</label>
+  <input id="city" name="city" type="text" class="form-control">
+  <br>
+  <label for="country">Review's Country</label>
+  <input id="country" name="country" type="text" class="form-control">
+  <br>
+  <button type="submit" class="btn btn-dark">Search!</button>
+</form>
+<br>
+<a href="/Reviews"><p>Return to Home</p></a>
