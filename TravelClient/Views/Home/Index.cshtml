@@ -4,13 +4,13 @@
 @using TravelClient.Models;
 
 <h1>All Reviews:</h1>
-
+<br>
 <ol>
 @foreach (Review review in Model)
 {
     <ul>
-        <li>Review # @review.ReviewId</li>
-        <li>Name: @review.Name</li>
+        @* <li>Review # @review.ReviewId</li> *@
+        <li><strong>Place: @review.Name</strong></li>
         <li>City: @review.City</li>
         <li>Country: @review.Country</li>
         <li>Rating: @review.Rating</li>
